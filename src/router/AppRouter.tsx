@@ -1,18 +1,16 @@
 import { FunctionComponent } from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { LoginPage } from '../auth/pages/LoginPage';
-import { DcPage, MarvelPage } from '../heroes/pages';
+import { Route, Routes } from 'react-router-dom';
+import { LoginPage } from '../auth';
+import { HeroesRoutes } from '../heroes';
 
 export const AppRouter: FunctionComponent = () => {
   return (
     <>
-    <Routes>
-      <Route path='/marvel' element={<MarvelPage />} />
-      <Route path='/dc' element={<DcPage />} />
+      <Routes>
+        <Route path='/login' element={<LoginPage />} />
 
-      <Route path='/login' element={<LoginPage />} />
-      <Route path='/' element={<Navigate to={"/marvel"} />} />
-    </Routes>
+        <Route path='/*' element={<HeroesRoutes />} />
+      </Routes>
     </>
   )
 }
